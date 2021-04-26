@@ -1,5 +1,4 @@
 const { test, expect } = require('@jest/globals');
-const { describe } = require('yargs');
 const exercises = require ('./exercises');
 
 //1
@@ -33,7 +32,7 @@ describe('Signs in the multiply', () => {
 
     test("multiply -2 x -3 to equal 6", () => {
         expect(exercises.multiplicacion(-2, -3)).toBe(6);
-        expect(exercises.multiplicacion(-2, -3)).not.toBe(6);
+        expect(exercises.multiplicacion(-2, -3)).not.toBe(-6);
     });
 
     test("multiply -2 x 3 to equal -6", () => {
@@ -46,7 +45,7 @@ describe('Signs in the multiply', () => {
 
 describe('Division', () => {
     test('The divisor cannot be zero', () => {
-        expect(exercises.division(2,0)).tobe("It is invalid, we cannot division with 0");
+        expect(exercises.division(2,0)).toMatch("No se puede dividir por 0");
     });
     test('divide 10 by 2 to equal 5', () => {
         expect(exercises.division(10, 2)).toBe(5);
@@ -56,8 +55,13 @@ describe('Division', () => {
 
 //6
 
-test("if multiplicador is undefined then multiplicador is equal to 10", () => {
-    expect(exercises.tablaMultiplicar(2)).toEqual([0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]);
+describe('Tabla de multiplicar', () => {
+    test("if multiplicador is undefined then multiplicador is equal to 10", () => {
+        expect(exercises.tablaMultiplicar(2)).toEqual([0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]);
+    });
+    test("multiplicador 5 * 2", () => {
+        expect(exercises.tablaMultiplicar(5, 2)).toStrictEqual([0, 5, 10]);
+    });
 });
 
 //7
